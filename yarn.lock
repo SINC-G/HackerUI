@@ -3775,6 +3775,11 @@ file-uri-to-path@1.0.0:
   resolved "https://registry.npm.taobao.org/file-uri-to-path/download/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
   integrity sha1-VTp7hEb/b2hDWcRF8eN6BdrMM90=
 
+filepond@^4.25.2:
+  version "4.25.2"
+  resolved "https://registry.npmjs.org/filepond/-/filepond-4.25.2.tgz#5d1c087787851fae37f7a904ff518878b8a47dba"
+  integrity sha512-IQ71wW6PiDMvT0yTJBvnQmh5lOveM6lwwcqZBdKX7GATguuSQwcKB0g+/kD08hml4VAwR2fIyk3J1Vf0fGuxag==
+
 filesize@^3.6.1:
   version "3.6.1"
   resolved "https://registry.npm.taobao.org/filesize/download/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
@@ -8226,6 +8231,11 @@ vue-eslint-parser@^7.0.0:
     espree "^6.2.1"
     esquery "^1.4.0"
     lodash "^4.17.15"
+
+vue-filepond@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmjs.org/vue-filepond/-/vue-filepond-6.0.0.tgz#737cba111d0850fb78b25631c3fff44d8eca43d4"
+  integrity sha512-jEg9cqVFHXntFaM5fmQP3GDAOsKRGYuMCNeN++1LtiNlnpQqTStFxOHM/8/jCMJApCKqS2jVvFXJIPNVm3s/vA==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
