@@ -1,10 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -38,19 +34,20 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <v-container><upload-input></upload-input></v-container>
+      <v-container></v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import UploadInput from "./components/UploadInput.vue";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    HelloWorld,
+    UploadInput,
   },
 
   data: () => ({
