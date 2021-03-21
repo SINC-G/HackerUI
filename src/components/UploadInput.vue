@@ -1,6 +1,6 @@
 <template>
   <div>
-    <file-pond name="test" ref="pond" @init="handleFilePondInit" />
+    <file-pond name="file" ref="pond" @init="handleFilePondInit" />
   </div>
 </template>
 
@@ -20,18 +20,37 @@ const FilePond = vueFilePond(FilePondPluginFileValidateType);
 import zh_CN from "filepond/locale/zh-cn.js";
 setOptions(zh_CN);
 
+let validTypes = [
+  "application/vnd.android.package-archive",
+  "application/iphone",
+];
 // FilePond 全局设置
 setOptions({
   server: "/api/uploadfile",
   instantUpload: false,
   // 插件设置
-  acceptedFileTypes:
-    "application/vnd.android.package-archive, application/iphone",
-
+  acceptedFileTypes: validTypes,
   fileValidateTypeLabelExpectedTypesMap: {
-    "application/vnd.android.package-archive": ".apk",
-    "application/iphone": ".ipa",
+    [validTypes[0]]: ".apk",
+    [validTypes[1]]: ".ipa",
   },
+  fileValidateTypeDetectType: (source, type) =>
+    new Promise((resolve, reject) => {
+      //console.log(source);
+      //console.log(type);
+      // Do custom type detection here and return with promise
+      if (source.name.split(".").reverse()[0] == "apk") {
+        //console.log("1");
+        type = validTypes[0];
+      } else if (source.name.split(".").reverse()[0] == "ipa") {
+        type = validTypes[1];
+      } else {
+        //console.log("3");
+        reject();
+      }
+
+      resolve(type);
+    }),
 });
 
 // TODO 上传文件，服务器验证返回信息
