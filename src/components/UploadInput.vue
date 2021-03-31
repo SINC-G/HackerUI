@@ -1,6 +1,11 @@
 <template>
   <div>
-    <file-pond name="file" ref="pond" @init="handleFilePondInit" />
+    <file-pond
+      name="file"
+      ref="pond"
+      @init="handleFilePondInit"
+      @processfile="handleProcessFile"
+    />
   </div>
 </template>
 
@@ -22,11 +27,14 @@ setOptions(zh_CN);
 
 let validTypes = [
   "application/vnd.android.package-archive",
-  "application/iphone",
+  "application/iphone", // BUG 如何表示ios应用ipa文件
 ];
+
 // FilePond 全局设置
 setOptions({
-  server: "/api/uploadfile",
+  server: {
+    url: "/api/uploadfile",
+  },
   instantUpload: false,
   // 插件设置
   acceptedFileTypes: validTypes,
@@ -65,13 +73,18 @@ export default {
   // 输入框
   // loading
   methods: {
-    upload() {},
     handleFilePondInit: function () {
       //init filepond事件，https://pqina.nl/filepond/docs/patterns/api/filepond-instance/#events
       console.log("FilePond has initialized");
 
       // example of instance method call on pond reference
       this.$refs.pond.getFiles();
+    },
+    handleProcessFile: function (error, file) {
+      let res = JSON.parse(file.serverId);
+      if (res.code === 2000) {
+        this.$router.push("main");
+      }
     },
   },
   components: {
