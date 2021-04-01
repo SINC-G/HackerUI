@@ -1,5 +1,5 @@
 <template>
-  <v-stepper v-model="stepCom">
+  <v-stepper v-model="stepNum">
     <v-stepper-header>
       <v-stepper-step :complete="stepCom.getInfoCheck" step="1" editable
         >应用基本信息</v-stepper-step
@@ -18,7 +18,7 @@
 
     <v-stepper-items>
       <v-stepper-content step="1">
-        <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+        <show-app-info></show-app-info>
 
         <v-btn color="primary" @click="stepCom[0] = true"> Continue </v-btn>
 
@@ -45,10 +45,14 @@
 </template>
 
 <script>
+import ShowAppInfo from "./ShowAppInfo.vue";
+
 export default {
+  components: { ShowAppInfo },
   data() {
     return {
       stepCom: { getInfoCheck: false },
+      stepNum: 1,
     };
   },
 };

@@ -82,8 +82,8 @@ export default {
     },
     handleProcessFile: function (error, file) {
       let res = JSON.parse(file.serverId);
-      if (res.code === 2000) {
-        this.$router.push("main");
+      if (res) {
+        this.$router.replace("main"); //TODO 不保存历史跳转
       }
     },
   },
