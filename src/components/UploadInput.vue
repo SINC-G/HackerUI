@@ -82,8 +82,9 @@ export default {
     },
     handleProcessFile: function (error, file) {
       let res = JSON.parse(file.serverId);
+      console.log(res);
       if (res) {
-        this.$router.replace("main"); //TODO 不保存历史跳转
+        this.$router.replace({ name: "main", params: { appInfoList: res } });
       }
     },
   },

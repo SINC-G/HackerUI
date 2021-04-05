@@ -21,19 +21,12 @@
 export default {
   // 可以显示骨架, 请求, 列表渲染, 后端返回是个对象
   data() {
-    return {
-      appInfoList: { appName: "app" },
-    };
+    return { appInfoList: null };
   },
-  beforeCreate() {
-    this.$axios
-      .get("/parser/apkinfo")
-      .then((res) => {
-        this.appInfoList = res.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  created() {
+    console.log(this.appInfoList);
+    console.log(this.$route.params);
+    this.appInfoList = this.$route.params.appInfoList;
   },
 };
 </script>
