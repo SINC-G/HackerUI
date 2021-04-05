@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import ShowAppInfo from "./ShowAppInfo.vue";
+import ShowAppInfo from "./appInfoView/ShowAppInfo.vue";
 
 export default {
   components: { ShowAppInfo },
