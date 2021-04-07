@@ -20,9 +20,9 @@
       <v-stepper-content step="1">
         <show-app-info></show-app-info>
 
-        <v-btn color="primary" @click="stepCom[0] = true"> Continue </v-btn>
+        <v-btn color="primary" @click="stepCom[0] = true"> 继续 </v-btn>
 
-        <v-btn text>Cancel</v-btn>
+        <v-btn text>取消</v-btn>
       </v-stepper-content>
 
       <v-stepper-content step="2">
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import ShowAppInfo from "./appInfoView/ShowAppInfo.vue";
+import ShowAppInfo from "./appInfoView/AppInfo.vue";
 
 export default {
   components: { ShowAppInfo },
