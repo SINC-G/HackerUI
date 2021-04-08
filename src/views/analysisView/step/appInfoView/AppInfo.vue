@@ -1,27 +1,39 @@
 <template>
-  <v-simple-table fixed-header height="300px">
-    <template v-slot:default>
-      <thead>
-        <tr>
-          <th class="text-center">名称</th>
-          <th class="text-center">值</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(value, name) in appInfoList" :key="name">
-          <td>{{ name }}</td>
-          <td>{{ value }}</td>
-        </tr>
-        <tr>
-          <td><file-tree :paths="appInfoList.files"></file-tree></td>
-        </tr>
-      </tbody>
-    </template>
-  </v-simple-table>
+  <v-row>
+    <v-col>
+      <v-card>
+        <v-simple-table fixed-header height="300px">
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th class="text-center">名称</th>
+                <th class="text-center">值</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(value, name) in appInfoList" :key="name">
+                <td>{{ name }}</td>
+                <td>{{ value }}</td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+      </v-card>
+    </v-col>
+    <v-col>
+      <v-card>
+        <file-tree :paths="appInfoList.files"></file-tree>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
 import FileTree from "./component/FileTree.vue";
+
 export default {
   components: { FileTree },
   // 可以显示骨架, 请求, 列表渲染, 后端返回是个对象

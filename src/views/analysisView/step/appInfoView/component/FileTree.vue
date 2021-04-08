@@ -6,13 +6,15 @@
     activatable
     item-key="name"
     open-on-click
+    dense
+    rounded
   >
     <template v-slot:prepend="{ item, open }">
       <v-icon v-if="!item.file">
         {{ open ? "mdi-folder-open" : "mdi-folder" }}
       </v-icon>
       <v-icon v-else>
-        {{ files[item.file] ? files[item.file] : files.file }}
+        {{ files[item.file] ? files[item.file] : files.other }}
       </v-icon>
     </template>
   </v-treeview>
@@ -30,9 +32,7 @@ export default {
       md: "mdi-language-markdown",
       pdf: "mdi-file-pdf",
       png: "mdi-file-image",
-      txt: "mdi-file-document-outline",
-      xls: "mdi-file-excel",
-      file: "mdi-file-outline",
+      other: "mdi-file-document-outline",
     },
     tree: [],
     items: Array,
@@ -50,7 +50,7 @@ function list2FileTree(paths) {
   let level = { result };
 
   // 肯定是文件, 那么就不会生成空目录
-  paths.forEach((path) => {
+  paths.sort().forEach((path) => {
     path.split("/").reduce((r, name) => {
       if (!r[name]) {
         r[name] = { result: [] };
@@ -67,6 +67,31 @@ function list2FileTree(paths) {
   });
 
   console.log(result);
+  // 排序 文件夹在前
+  result.sort((a, b) => {
+    let x, y;
+
+    if (!a.children) {
+      x = 0;
+    } else {
+      x = 1;
+    }
+
+    if (!b.children) {
+      y = 0;
+    } else {
+      y = 1;
+    }
+
+    if (x < y) {
+      return 1;
+    }
+    if (x > y) {
+      return -1;
+    }
+    return 0;
+  });
+
   return result;
 }
 </script>
