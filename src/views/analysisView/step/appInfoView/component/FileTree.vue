@@ -55,7 +55,7 @@ function list2FileTree(paths) {
       if (!r[name]) {
         r[name] = { result: [] };
         if (name.split(".").length > 1) {
-          let file = { name, file: name.split(".")[1] };
+          let file = { name, file: name.split(".").reverse()[0] };
           r.result.push(file);
         } else {
           r.result.push({ name, children: r[name].result });
@@ -68,6 +68,8 @@ function list2FileTree(paths) {
 
   console.log(result);
   // 排序 文件夹在前
+  // FIXME 文件夹内部排序
+  // https://www.jianshu.com/p/5613f7b47905
   result.sort((a, b) => {
     let x, y;
 

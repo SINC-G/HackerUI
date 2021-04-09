@@ -2,30 +2,38 @@
   <v-row>
     <v-col>
       <v-card>
-        <v-simple-table fixed-header height="300px">
-          <template v-slot:default>
-            <thead>
-              <tr>
-                <th class="text-center">名称</th>
-                <th class="text-center">值</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(value, name) in appInfoList" :key="name">
-                <td>{{ name }}</td>
-                <td>{{ value }}</td>
-              </tr>
-              <tr>
-                <td></td>
-              </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
+        <v-card-title class="subheading font-weight-bold">
+          基础信息
+        </v-card-title>
+
+        <v-divider></v-divider>
+        ...
       </v-card>
     </v-col>
     <v-col>
       <v-card>
-        <file-tree :paths="appInfoList.files"></file-tree>
+        <v-card-title class="subheading font-weight-bold">
+          应用文件目录
+        </v-card-title>
+
+        <v-divider></v-divider>
+        <file-tree :paths="appInfo.files"></file-tree>
+      </v-card>
+    </v-col>
+    <v-col>
+      <v-card>
+        <v-card-title class="subheading font-weight-bold">
+          Activities
+        </v-card-title>
+
+        <v-divider></v-divider>
+        <v-list disabled>
+          <v-list-item v-for="(item, i) in appInfo.activities" :key="i">
+            <v-list-item-content>
+              {{ item }}
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-card>
     </v-col>
   </v-row>
@@ -47,12 +55,12 @@ export default {
   // 第一个表, basesinfo, 键对值, 字符
   // 列表单独一个列表, activity
   data() {
-    return { appInfoList: {} };
+    return { appInfo: {} };
   },
   created() {
-    console.log(this.appInfoList);
-    console.log(this.$route.params);
-    this.appInfoList = this.$route.params.appInfoList;
+    //console.log(this.appInfo);
+    //console.log(this.$route.params);
+    this.appInfo = this.$route.params.appInfo;
   },
 };
 </script>
