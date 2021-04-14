@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ShowStep from "./ShowStep.vue";
+import ShowStep from "./step/StepView.vue";
 export default {
   components: { ShowStep },
 };

@@ -84,7 +84,7 @@ export default {
       let res = JSON.parse(file.serverId);
       console.log(res);
       if (res) {
-        this.$router.replace({ name: "main", params: { appInfoList: res } });
+        this.$router.replace({ name: "main", params: { appInfo: res } });
       }
     },
   },

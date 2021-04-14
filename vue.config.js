@@ -7,12 +7,14 @@ module.exports = {
       '/api': {
         target: 'http://localhost:8000',
         pathRewrite: {
-          '^/api': ''
+          '^/api': '/'
         },
         changeOrigin: true,
         ws: true
       }
     }
-    
+  },
+  configureWebpack: {
+    devtool: 'source-map'
   }
 }
