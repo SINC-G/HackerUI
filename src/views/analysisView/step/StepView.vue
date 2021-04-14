@@ -1,5 +1,5 @@
 <template>
-  <v-stepper v-model="stepNum">
+  <v-stepper v-model="stepNum" vertical>
     <v-stepper-header>
       <v-stepper-step :complete="stepCom.getInfoCheck" step="1" editable
         >应用基本信息</v-stepper-step
@@ -8,47 +8,36 @@
       <v-divider></v-divider>
 
       <v-stepper-step :complete="stepCom[1]" step="2" editable
-        >Name of step 2</v-stepper-step
+        >应用安全分析</v-stepper-step
       >
 
       <v-divider></v-divider>
 
-      <v-stepper-step step="3" editable>Name of step 3</v-stepper-step>
+      <v-stepper-step step="3" editable>安全分析报告</v-stepper-step>
     </v-stepper-header>
 
     <v-stepper-items>
       <v-stepper-content step="1">
         <show-app-info></show-app-info>
-
-        <v-btn color="primary" @click="stepCom[0] = true"> 继续 </v-btn>
-
-        <v-btn text>取消</v-btn>
       </v-stepper-content>
 
       <v-stepper-content step="2">
-        <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
-
-        <v-btn color="primary" @click="stepCom[1] = true"> Continue </v-btn>
-
-        <v-btn text>Cancel</v-btn>
+        <app-analysis></app-analysis>
       </v-stepper-content>
 
       <v-stepper-content step="3">
         <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
-
-        <v-btn color="primary" @click="stepCom[0] = false"> Continue </v-btn>
-
-        <v-btn text>Cancel</v-btn>
       </v-stepper-content>
     </v-stepper-items>
   </v-stepper>
 </template>
 
 <script>
+import AppAnalysis from "./appAnalysisView/AppAnalysis.vue";
 import ShowAppInfo from "./appInfoView/AppInfo.vue";
 
 export default {
-  components: { ShowAppInfo },
+  components: { ShowAppInfo, AppAnalysis },
   data() {
     return {
       stepCom: { getInfoCheck: false },
