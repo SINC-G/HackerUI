@@ -1,5 +1,5 @@
 <template>
-  <v-stepper v-model="stepNum" vertical>
+  <v-stepper v-model="stepNum">
     <v-stepper-header>
       <v-stepper-step :complete="stepCom.getInfoCheck" step="1" editable
         >应用基本信息</v-stepper-step
