@@ -26,6 +26,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import('../views/analysisView/Main.vue'),
     props: true
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
   }
 ]
 
