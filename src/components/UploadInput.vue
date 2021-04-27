@@ -34,6 +34,7 @@ let validTypes = [
 setOptions({
   server: {
     url: "/api/uploadfile",
+    headers: { Authorization: "Bearer " + localStorage.getItem("token") },
   },
   instantUpload: false,
   // 插件设置
