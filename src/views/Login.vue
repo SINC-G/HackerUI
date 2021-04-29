@@ -22,12 +22,7 @@ export default {
           console.error(err);
         });
     } else {
-      fetch("/api/login/github").then((response) => {
-        //console.log(response);
-        if (response.redirected) {
-          location.href = response.url; //TODO 更好的重定向方法
-        }
-      });
+      location.href = "/api/login/github";
     }
   },
 };
