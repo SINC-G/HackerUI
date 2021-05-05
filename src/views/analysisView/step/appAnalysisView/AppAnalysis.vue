@@ -27,15 +27,22 @@ export default {
         location.host
       }/api/ws`;
 
-      const websock = new WebSocket(wsurl, [
+      const ws = new WebSocket(wsurl, [
         "access_token",
         localStorage.getItem("token"),
       ]);
-      websock.onopen = () => {
+      ws.onopen = () => {
         console.log("ws连接成功!");
-        websock.send("Hello Server!");
+        ws.send("Hello Server!");
       };
-      websock.onmessage = this.wsmessage;
+      ws.onmessage = this.wsmessage;
+      ws.onerror = (event) => {
+        console.log(event);
+      };
+      ws.onclose = (e) => {
+        console.log(e.code + " " + e.reason + " " + e.wasClean);
+        console.log(e);
+      };
     },
     wsmessage(e) {
       console.log(e);
