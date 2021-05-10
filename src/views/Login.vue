@@ -15,7 +15,7 @@ export default {
         .get("/auth/github", { params: { code, state } })
         .then((res) => {
           // console.log(res);
-          localStorage.setItem("token", res.data);
+          localStorage.setItem("token", res.data.type + " " + res.data.token);
           this.$router.replace({ name: "Home" });
         })
         .catch((err) => {

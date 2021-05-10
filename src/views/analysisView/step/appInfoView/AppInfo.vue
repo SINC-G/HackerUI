@@ -7,7 +7,7 @@
         </v-card-title>
 
         <v-divider></v-divider>
-        ...
+        <base-info :apkInfo="appInfo"></base-info>
       </v-card>
     </v-col>
     <v-col>
@@ -40,10 +40,11 @@
 </template>
 
 <script>
+import BaseInfo from "./component/BaseInfo.vue";
 import FileTree from "./component/FileTree.vue";
 
 export default {
-  components: { FileTree },
+  components: { FileTree, BaseInfo },
   // 可以显示骨架, 请求, 列表渲染, 后端返回是个对象
   // TODO骨架: https://vuetifyjs.com/zh-Hans/components/skeleton-loaders/#section-65e0969c788d
   // TODO 时间轴: https://vuetifyjs.com/zh-Hans/components/timelines/#section-7d275bc6
