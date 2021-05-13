@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app clipped-left>
+  <v-app-bar app clipped-left short>
     <v-toolbar-title>MASAP</v-toolbar-title>
 
     <v-spacer></v-spacer>
