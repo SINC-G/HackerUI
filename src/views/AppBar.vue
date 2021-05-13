@@ -1,12 +1,13 @@
 <template>
-  <v-app-bar app>
-    <v-toolbar-title>移动应用安全分析平台</v-toolbar-title>
+  <v-app-bar app clipped-left>
+    <v-toolbar-title>MASAP</v-toolbar-title>
 
     <v-spacer></v-spacer>
 
     <v-btn icon @click="login">
       <v-icon>mdi-github</v-icon>
     </v-btn>
+    <v-btn>登录/注册</v-btn>
   </v-app-bar>
 </template>
 
