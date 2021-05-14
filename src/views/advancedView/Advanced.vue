@@ -1,13 +1,15 @@
 <template>
   <div>
-    <show-step></show-step>
+    <v-main>
+      <step-view></step-view>
+    </v-main>
   </div>
 </template>
 
 <script>
-import ShowStep from "./step/StepView.vue";
+import StepView from "./step/StepView.vue";
 export default {
-  components: { ShowStep },
+  components: { StepView },
   created() {
     this.initWebSocket();
   },
