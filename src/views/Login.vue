@@ -1,5 +1,11 @@
 <template>
-  <div></div>
+  <div>
+    <v-main
+      ><v-btn-toggle>
+        <v-btn><v-icon>mdi-github</v-icon>使用 GitHub 登录</v-btn>
+      </v-btn-toggle></v-main
+    >
+  </div>
 </template>
 
 <script>
@@ -7,7 +13,7 @@ export default {
   data() {
     return {};
   },
-  created: function () {
+  mounted: function () {
     let code = this.$route.query.code;
     let state = this.$route.query.state;
     if (code && state) {
