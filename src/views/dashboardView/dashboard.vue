@@ -18,7 +18,7 @@
 
 <script>
 import Overview from "./components/Overview.vue";
-import PersonalSideNav from "./components/DashboardSideNav.vue";
+import PersonalSideNav from "./DashboardSideNav.vue";
 export default {
   components: { PersonalSideNav, Overview },
   data() {
