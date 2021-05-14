@@ -16,24 +16,12 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
-          <v-card> <v-card-title>我的应用总览</v-card-title></v-card></v-col
-        >
-      </v-row>
-      <v-row>
-        <v-col>
-          <app-control></app-control>
-        </v-col>
-      </v-row>
     </v-container>
   </div>
 </template>
 
 <script>
-import AppControl from "./AppControl.vue";
 export default {
-  components: { AppControl },
   data: () => ({
     items: [
       { icon: "mdi-cellphone", title: "我的应用", num: 2 },

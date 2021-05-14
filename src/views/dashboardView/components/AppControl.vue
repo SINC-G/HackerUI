@@ -1,10 +1,12 @@
 <template>
-  <v-card>
+  <v-card outlined>
     <v-card-title> 分析管理 </v-card-title>
 
-    <div>
-      <app-analyse-card></app-analyse-card>
-    </div>
+    <v-container>
+      <div>
+        <app-analyse-card></app-analyse-card>
+      </div>
+    </v-container>
   </v-card>
 </template>
 

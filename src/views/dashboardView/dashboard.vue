@@ -4,13 +4,21 @@
 
     <v-main>
       <overview></overview>
+
+      <v-container>
+        <v-row>
+          <v-col>
+            <router-view></router-view>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </div>
 </template>
 
 <script>
 import Overview from "./components/Overview.vue";
-import PersonalSideNav from "./components/PersonalSideNav.vue";
+import PersonalSideNav from "./components/DashboardSideNav.vue";
 export default {
   components: { PersonalSideNav, Overview },
   data() {
