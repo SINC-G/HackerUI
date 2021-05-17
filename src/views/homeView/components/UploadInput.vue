@@ -31,10 +31,11 @@ let validTypes = [
 ];
 
 // FilePond 全局设置
+// BUG token 没有及时更新，考虑使用Vuex
 setOptions({
   server: {
     url: "/api/uploadfile",
-    headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+    headers: { Authorization: localStorage.getItem("token") },
   },
   instantUpload: false,
   // 插件设置
@@ -82,10 +83,13 @@ export default {
       this.$refs.pond.getFiles();
     },
     handleProcessFile: function (error, file) {
+      //console.log(file);
       let res = JSON.parse(file.serverId);
       console.log(res);
       if (res) {
-        this.$router.replace({ name: "Dashboard", params: { appInfo: res } });
+        let info = { name: file.filename };
+        localStorage.setItem("appInfo", JSON.stringify(res));
+        this.$router.replace({ name: "Manager", params: { createInfo: info } });
       }
     },
   },

@@ -38,9 +38,14 @@ export default {
   components: {
     UploadInput,
   },
-  data: () => ({
-    isLogin: false,
-  }),
+  data: () => ({}),
+  computed: {
+    isLogin: function () {
+      //BUG token失效
+      if (localStorage.getItem("token")) return true;
+      else return false;
+    },
+  },
 };
 </script>
 

@@ -7,7 +7,7 @@
     <v-btn icon @click="login">
       <v-icon>mdi-github</v-icon>
     </v-btn>
-    <v-btn>登录/注册</v-btn>
+    <v-btn v-if="false">登录/注册</v-btn>
   </v-app-bar>
 </template>
 

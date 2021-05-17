@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="false">
     <v-main
       ><v-btn-toggle>
         <v-btn><v-icon>mdi-github</v-icon>使用 GitHub 登录</v-btn>

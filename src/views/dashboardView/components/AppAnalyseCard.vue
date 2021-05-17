@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title>应用名</v-card-title>
+    <v-card-title>{{ title }}</v-card-title>
     <div v-if="standardMode">
       <v-stepper vertical>
         <v-stepper-step step="1"> 基础应用分析 </v-stepper-step>
@@ -13,7 +13,7 @@
       </v-stepper>
     </div>
     <v-card-actions v-else>
-      <v-btn @click="standardMode = true">开始</v-btn>
+      <v-btn @click="standardMode = true">标准模式开始</v-btn>
       <v-btn :to="{ name: 'Advanced' }">切换至高级模式 </v-btn>
     </v-card-actions>
   </v-card>
@@ -24,6 +24,12 @@ export default {
   data: () => ({
     standardMode: false,
   }),
+  props: {
+    title: { type: String, default: "应用名" },
+  },
+  methods: {
+    standardStart: function () {},
+  },
 };
 </script>
 

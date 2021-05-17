@@ -13,7 +13,7 @@
     <v-col>
       <v-card>
         <v-card-title class="subheading font-weight-bold">
-          应用文件目录
+          应用文件目录(解包目录)
         </v-card-title>
 
         <v-divider></v-divider>
@@ -58,10 +58,12 @@ export default {
   data() {
     return { appInfo: {} };
   },
+  props: {
+    //appInfo:Object
+  },
   created() {
-    //console.log(this.appInfo);
-    //console.log(this.$route.params);
-    this.appInfo = this.$route.params.appInfo;
+    // FIXME 先暴力一点，直接从localStorage里读取
+    this.appInfo = JSON.parse(localStorage.getItem("appInfo"));
   },
 };
 </script>

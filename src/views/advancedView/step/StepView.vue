@@ -18,7 +18,27 @@
 
     <v-stepper-items>
       <v-stepper-content step="1">
-        <show-app-info></show-app-info>
+        <v-slide-group v-model="selectParser">
+          <v-slide-item>
+            <template v-solt:default="{ active, toggle }">
+              <v-btn
+                depressed
+                rounded
+                class="mb-2"
+                @click="toggle"
+                :input-value="active"
+                >APKParser</v-btn
+              >
+            </template>
+          </v-slide-item>
+        </v-slide-group>
+        <v-expand-transition>
+          <div v-if="selectParser != null">test</div>
+        </v-expand-transition>
+        <v-divider></v-divider>
+        <v-container>
+          <show-app-info></show-app-info>
+        </v-container>
       </v-stepper-content>
 
       <v-stepper-content step="2">
@@ -42,6 +62,7 @@ export default {
     return {
       stepCom: { getInfoCheck: false },
       stepNum: 1,
+      selectParser: null,
     };
   },
 };
