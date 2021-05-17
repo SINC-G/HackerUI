@@ -1,5 +1,5 @@
 <template>
-  <v-simple-table fixed-header height="300px" dense>
+  <v-simple-table fixed-header height="600px" dense>
     <template v-slot:default>
       <tbody>
         <tr v-for="(value, name) in apkInfo" :key="name">
@@ -17,7 +17,16 @@
 <script>
 export default {
   props: {
-    apkInfo: Object,
+    appInfo: Object,
+  },
+  computed: {
+    apkInfo: function () {
+      let info = JSON.parse(JSON.stringify(this.appInfo));
+      delete info.files_types;
+      delete info.files;
+      console.log(this.appInfo);
+      return info;
+    },
   },
 };
 </script>

@@ -1,70 +1,58 @@
 <template>
-  <v-row>
-    <v-col>
-      <v-card>
-        <v-card-title class="subheading font-weight-bold">
-          基础信息
-        </v-card-title>
-
-        <v-divider></v-divider>
-        <base-info :apkInfo="appInfo"></base-info>
-      </v-card>
-    </v-col>
-    <v-col>
-      <v-card>
-        <v-card-title class="subheading font-weight-bold">
-          应用文件目录(解包目录)
-        </v-card-title>
-
-        <v-divider></v-divider>
-        <file-tree :paths="appInfo.files"></file-tree>
-      </v-card>
-    </v-col>
-    <v-col>
-      <v-card>
-        <v-card-title class="subheading font-weight-bold">
-          Activities
-        </v-card-title>
-
-        <v-divider></v-divider>
-        <v-list disabled>
-          <v-list-item v-for="(item, i) in appInfo.activities" :key="i">
-            <v-list-item-content>
-              {{ item }}
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div>
+    <v-slide-group v-model="selectedParser">
+      <v-slide-item
+        v-slot="{ active, toggle }"
+        v-for="(item, i) in items"
+        :key="i"
+      >
+        <v-btn
+          depressed
+          rounded
+          class="mb-2"
+          @click="toggle"
+          :input-value="active"
+          active-class="purple white--text"
+          >{{ item }}
+        </v-btn>
+      </v-slide-item>
+    </v-slide-group>
+    <v-expand-transition>
+      <div v-if="selectedParser != null">
+        <v-chip-group multiple v-model="selectedComponent">
+          <v-chip
+            v-for="(value, key) in selectInfo"
+            :key="key"
+            filter
+            :value="key"
+          >
+            {{ value.name }}
+          </v-chip>
+        </v-chip-group>
+      </div>
+    </v-expand-transition>
+    <v-divider></v-divider>
+    <v-container>
+      <show-info :selectInfo="selectedComponent"></show-info>
+    </v-container>
+  </div>
 </template>
 
 <script>
-import BaseInfo from "./component/BaseInfo.vue";
-import FileTree from "./component/FileTree.vue";
-
+import ShowInfo from "./ShowInfo.vue";
 export default {
-  components: { FileTree, BaseInfo },
-  // 可以显示骨架, 请求, 列表渲染, 后端返回是个对象
-  // TODO骨架: https://vuetifyjs.com/zh-Hans/components/skeleton-loaders/#section-65e0969c788d
-  // TODO 时间轴: https://vuetifyjs.com/zh-Hans/components/timelines/#section-7d275bc6
-  // 或许可以每个事件生成一个时间轴, 有什么作用, 再看
-  // TODO 树形: https://vuetifyjs.com/zh-Hans/components/treeview/#section-641c7d22268fc76ee4
-  // 用这个 https://vuetifyjs.com/zh-Hans/components/data-iterators/#section-98757709548c9875811a
-  // 分表显示, 基础信息一栏, activity一栏之类的?
-  // 键值, 基本信息一栏,
-  // 第一个表, basesinfo, 键对值, 字符
-  // 列表单独一个列表, activity
-  data() {
-    return { appInfo: {} };
-  },
-  props: {
-    //appInfo:Object
-  },
-  created() {
-    // FIXME 先暴力一点，直接从localStorage里读取
-    this.appInfo = JSON.parse(localStorage.getItem("appInfo"));
-  },
+  components: { ShowInfo },
+  data: () => ({
+    items: ["apkparser"],
+    selectedComponent: ["baseinfo"],
+    selectedParser: null,
+    selectInfo: {
+      baseinfo: { name: "基本信息" },
+      filetree: { name: "应用文件树" },
+      activites: { name: "Activites" },
+    },
+  }),
+  methods: {},
 };
 </script>
 
