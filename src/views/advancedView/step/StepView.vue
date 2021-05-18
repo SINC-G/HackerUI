@@ -1,15 +1,20 @@
 <template>
   <v-stepper v-model="stepNum">
     <v-stepper-header>
-      <v-stepper-step :complete="stepCom.getInfoCheck" step="1" editable
-        >应用基本信息</v-stepper-step
+      <v-stepper-step
+        :complete="stepCom.getInfoCheck"
+        step="1"
+        editable
+        edit-icon="$complete"
       >
+        应用基本信息
+      </v-stepper-step>
 
       <v-divider></v-divider>
 
-      <v-stepper-step :complete="stepCom[1]" step="2" editable
-        >应用安全分析</v-stepper-step
-      >
+      <v-stepper-step :complete="stepCom[1]" step="2" editable>
+        应用安全分析
+      </v-stepper-step>
 
       <v-divider></v-divider>
 
@@ -40,7 +45,7 @@ export default {
   components: { ShowAppInfo, AppAnalysis },
   data() {
     return {
-      stepCom: { getInfoCheck: false },
+      stepCom: { getInfoCheck: true },
       stepNum: 1,
     };
   },
