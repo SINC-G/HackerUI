@@ -49,7 +49,8 @@ export default {
     selectInfo: {
       baseinfo: { name: "基本信息" },
       filetree: { name: "应用文件树" },
-      activites: { name: "Activites" },
+      asrp: { name: "四大组件" },
+      permissions: { name: "权限列表" },
     },
   }),
   methods: {},

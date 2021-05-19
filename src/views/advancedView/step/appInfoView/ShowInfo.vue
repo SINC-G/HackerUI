@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col v-if="selectInfo.includes('baseinfo')" cols="6">
+    <v-col v-if="selectInfo.includes('baseinfo')" cols="5">
       <v-card>
         <v-card-title class="subheading font-weight-bold">
           基础信息
@@ -10,10 +10,15 @@
         <base-info :appInfo="appInfo"></base-info>
       </v-card>
     </v-col>
-    <v-col v-if="selectInfo.includes('filetree')">
+    <v-col v-if="selectInfo.includes('filetree')" cols="6">
       <v-card height="600px" class="overflow-y-auto">
         <v-card-title class="subheading font-weight-bold">
-          应用文件目录(解包目录)
+          <v-tooltip right>
+            <template v-slot:activator="{ on, attrs }">
+              <div v-on="on" v-bind="attrs">应用文件目录</div>
+            </template>
+            <span>解包目录</span>
+          </v-tooltip>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -21,15 +26,72 @@
         <file-tree :paths="appInfo.files"></file-tree>
       </v-card>
     </v-col>
-    <v-col v-if="selectInfo.includes('activites')">
+    <v-col v-if="selectInfo.includes('asrp')" cols="4">
       <v-card>
         <v-card-title class="subheading font-weight-bold">
-          Activities
+          四大组件
         </v-card-title>
 
         <v-divider></v-divider>
-        <v-list disabled>
-          <v-list-item v-for="(item, i) in appInfo.activities" :key="i">
+        <v-expansion-panels>
+          <v-expansion-panel>
+            <v-expansion-panel-header> Activity 组件 </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-list disabled dense>
+                <v-list-item v-for="(item, i) in appInfo.activities" :key="i">
+                  <v-list-item-content>
+                    {{ item }}
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header> Service 组件 </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-list disabled dense>
+                <v-list-item v-for="(item, i) in appInfo.services" :key="i">
+                  <v-list-item-content>
+                    {{ item }}
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header> Receiver 组件 </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-list disabled dense>
+                <v-list-item v-for="(item, i) in appInfo.receivers" :key="i">
+                  <v-list-item-content>
+                    {{ item }}
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header> Provider 组件 </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-list disabled dense>
+                <v-list-item v-for="(item, i) in appInfo.providers" :key="i">
+                  <v-list-item-content>
+                    {{ item }}
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-card>
+    </v-col>
+    <v-col v-if="selectInfo.includes('permissions')" cols="5">
+      <v-card>
+        <v-card-title>权限列表</v-card-title>
+        <v-divider></v-divider>
+
+        <v-list disabled dense>
+          <v-list-item v-for="(item, i) in appInfo.permissions" :key="i">
             <v-list-item-content>
               {{ item }}
             </v-list-item-content>
