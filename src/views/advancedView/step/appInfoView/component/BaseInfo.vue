@@ -1,5 +1,5 @@
 <template>
-  <v-simple-table fixed-header dense>
+  <v-simple-table fixed-header>
     <template v-slot:default>
       <tbody>
         <tr v-for="(value, key) in apkInfo" :key="key">

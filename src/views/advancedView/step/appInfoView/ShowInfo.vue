@@ -10,22 +10,6 @@
         <base-info :appInfo="appInfo"></base-info>
       </v-card>
     </v-col>
-    <v-col v-if="selectInfo.includes('filetree')" cols="6">
-      <v-card height="600px" class="overflow-y-auto">
-        <v-card-title class="subheading font-weight-bold">
-          <v-tooltip right>
-            <template v-slot:activator="{ on, attrs }">
-              <div v-on="on" v-bind="attrs">应用文件目录</div>
-            </template>
-            <span>解包目录</span>
-          </v-tooltip>
-        </v-card-title>
-
-        <v-divider></v-divider>
-
-        <file-tree :paths="appInfo.files"></file-tree>
-      </v-card>
-    </v-col>
     <v-col v-if="selectInfo.includes('asrp')" cols="4">
       <v-card>
         <v-card-title class="subheading font-weight-bold">
@@ -97,6 +81,22 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
+      </v-card>
+    </v-col>
+    <v-col v-if="selectInfo.includes('filetree')" cols="6">
+      <v-card height="500px" class="overflow-y-auto">
+        <v-card-title class="subheading font-weight-bold">
+          <v-tooltip right>
+            <template v-slot:activator="{ on, attrs }">
+              <div v-on="on" v-bind="attrs">应用文件目录</div>
+            </template>
+            <span>解包目录</span>
+          </v-tooltip>
+        </v-card-title>
+
+        <v-divider></v-divider>
+
+        <file-tree :paths="appInfo.files"></file-tree>
       </v-card>
     </v-col>
   </v-row>

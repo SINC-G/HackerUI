@@ -4,7 +4,15 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn icon @click="login">
+    <v-avatar v-if="isLogin" size="36px">
+      <v-img
+        v-if="userInfo.avatars"
+        alt="Avatar"
+        :src="userInfo.avatars"
+      ></v-img>
+      <span class="white--text headline" v-else>{{ userInfo.nickname }}</span>
+    </v-avatar>
+    <v-btn icon @click="login" v-else>
       <v-icon>mdi-github</v-icon>
     </v-btn>
     <v-btn v-if="false">登录/注册</v-btn>
@@ -13,10 +21,31 @@
 
 <script>
 export default {
+  data: () => ({
+    isLogin: false,
+    userInfo: null,
+  }),
   methods: {
     login: function () {
       this.$router.push({ name: "Login" });
     },
+  },
+  mounted() {
+    let that = this;
+    this.axios
+      .get("/user/info")
+      .then(function (response) {
+        console.log(response.data);
+
+        that.userInfo = response.data;
+
+        if (that.userInfo.id) {
+          that.isLogin = true;
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 };
 </script>
