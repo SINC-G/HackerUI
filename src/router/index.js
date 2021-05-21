@@ -53,20 +53,20 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 
 router.beforeEach((to, from, next) => {
+  console.log(to)
   // TODO 判断登录，跳转登录页（或到主页）
-  if (to.path === '/login') {
+  if (to.name === 'Login') {
     next();
   } else {
-    //console.log(to)
-    if (!store.islogin && to.name !== 'Home') {
+    //console.log(Boolean(to.name !== 'Home'))
+    if (!store.state.isLogin && to.name !== 'Home') {
       next({ name: 'Home' });
     } else {
+      //console.log(to, from)
       next();
     }
   }
