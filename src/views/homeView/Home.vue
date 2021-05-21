@@ -41,10 +41,26 @@ export default {
   data: () => ({}),
   computed: {
     isLogin: function () {
-      //BUG token失效
-      if (localStorage.getItem("token")) return true;
-      else return false;
+      //console.log(this.$store.state.isLogin);
+      return this.$store.state.isLogin;
     },
+  },
+  created() {
+    let that = this;
+    if (localStorage.getItem("token")) {
+      this.axios
+        .get("/user/info")
+        .then(function (response) {
+          //console.log(response);
+          if (response.data.id) {
+            that.$store.commit("logined");
+            that.$store.commit("updateUser", response.data);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   },
 };
 </script>

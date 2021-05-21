@@ -21,31 +21,20 @@
 
 <script>
 export default {
-  data: () => ({
-    isLogin: false,
-    userInfo: null,
-  }),
+  data: () => ({}),
   methods: {
     login: function () {
       this.$router.push({ name: "Login" });
     },
   },
-  mounted() {
-    let that = this;
-    this.axios
-      .get("/user/info")
-      .then(function (response) {
-        console.log(response.data);
-
-        that.userInfo = response.data;
-
-        if (that.userInfo.id) {
-          that.isLogin = true;
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  computed: {
+    userInfo: function () {
+      //console.log(this.$store.state.user);
+      return this.$store.state.user;
+    },
+    isLogin: function () {
+      return this.$store.state.isLogin;
+    },
   },
 };
 </script>

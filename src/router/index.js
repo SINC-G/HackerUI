@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/homeView/Home.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -58,13 +59,13 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  // TODO 判断登录，跳转登录页（或到主页）
   if (to.path === '/login') {
     next();
   } else {
-    let token = localStorage.getItem('Authorization');
-
-    if (token === 'null' || token === '') {
-      next('/login');
+    //console.log(to)
+    if (!store.islogin && to.name !== 'Home') {
+      next({ name: 'Home' });
     } else {
       next();
     }
