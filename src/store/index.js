@@ -14,6 +14,10 @@ export default new Vuex.Store({
     },
     updateUser(state, userinfo) {
       state.user = userinfo
+    },
+    logout(state) {
+      state.isLogin = false
+      state.user = null
     }
   },
   actions: {
