@@ -1,22 +1,23 @@
 <template>
-  <div v-if="false">
-    <v-main
-      ><v-btn-toggle>
-        <v-btn><v-icon>mdi-github</v-icon>使用 GitHub 登录</v-btn>
-      </v-btn-toggle></v-main
-    >
-  </div>
+  <v-container class="fill-height justify-center" fluid>
+    <login-card :loading="loading" :disabled="disabled"> </login-card>
+  </v-container>
 </template>
 
 <script>
+import LoginCard from "./LoginCard.vue";
 export default {
-  data() {
-    return {};
-  },
+  components: { LoginCard },
+  data: () => ({
+    loading: false,
+    disabled: false,
+  }),
   mounted: function () {
     let code = this.$route.query.code;
     let state = this.$route.query.state;
     if (code && state) {
+      this.loading = true;
+      this.disabled = true;
       this.axios
         .get("/auth/github", { params: { code, state } })
         .then((res) => {
@@ -27,10 +28,9 @@ export default {
         .catch((err) => {
           console.error(err);
         });
-    } else {
-      location.href = "/api/login/github";
     }
   },
+  methods: {},
 };
 </script>
 

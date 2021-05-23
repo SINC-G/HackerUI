@@ -31,7 +31,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    component: () => import('../views/authView/Login.vue')
   },
   {
     path: '/dashboard',
@@ -53,12 +53,12 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
-  // TODO 判断登录，跳转登录页（或到主页）
+  //console.log(to)
   if (to.name === 'Login') {
     next();
   } else {
