@@ -22,7 +22,7 @@ export default {
         .then(function (response) {
           //console.log(response);
           if (response.data.id) {
-            that.$store.commit("logined");
+            that.$store.commit("logined", localStorage.getItem("token"));
             that.$store.commit("updateUser", response.data);
           }
         })

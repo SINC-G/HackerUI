@@ -66,7 +66,7 @@ router.beforeEach((to, from, next) => {
     if (!store.state.isLogin && to.name !== 'Home') {
       next({ name: 'Home' });
     } else {
-      //console.log(to, from)
+      //console.log(to, from, next)
       next();
     }
   }

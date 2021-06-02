@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="text-h6 ma-4">选择分析器与配置选项(开发中...)</div>
     <v-expansion-panels>
       <v-expansion-panel v-for="(item, key) in items" :key="key">
         <v-expansion-panel-header>{{ item.title }}</v-expansion-panel-header>

@@ -13,7 +13,7 @@
       </v-stepper>
     </div>
     <v-card-actions v-else>
-      <v-btn @click="standardMode = true">标准模式开始</v-btn>
+      <v-btn @click="standardMode = true">标准模式开始(开发中...)</v-btn>
       <v-btn :to="{ name: 'Advanced' }">切换至高级模式 </v-btn>
     </v-card-actions>
   </v-card>
